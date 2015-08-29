@@ -50,7 +50,43 @@
     function PageSlider(options) {
         $.extend(this, defaults, options);
 
-        if (this.pages.length <= 0)="" {="" throw="" new="" error('target="" para="" not="" pass');="" }="" this.target="this.pages.eq(0).parent();" this.length="this.pages.length;" this.moveto="PageSlider.prototype.moveTo;" this.index="0;" this.curpage="this.pages.eq(this.index);" this.timer="null;" isgesturefollowing="this.gestureFollowing;" if="" (this.direction="==" 'vertical'="" ||="" this.direction="==" 'v')="" ;="" 'horizontal'="" 'h')="" (this.length="" <="1)" return;="" this._init();="" pageslider.prototype="{" _init:="" function="" ()="" var="" self="this;" 初始化css动画，好让滑动有缓动效果="" this.target.css('-webkit-transition',="" '-webkit-transform="" 0.5s="" ease');="" 如果是长页面="" this.pages.each(function="" $this="$(this)," $pagesliderwraper="$this.wrapInner('<div" class="PageSlider__wraper">').find('.PageSlider__wraper'),
+        if (this.pages.length <= 0) {
+            throw new Error('target para not pass');
+        }
+
+        this.target = this.pages.eq(0).parent();
+        this.length = this.pages.length;
+        this.moveTo = PageSlider.prototype.moveTo;
+        this.index = 0;
+        this.curPage = this.pages.eq(this.index);
+        this.timer = null;
+
+        isGestureFollowing = this.gestureFollowing;
+
+        if (this.direction === 'vertical' || this.direction === 'v') {
+            this.direction = 'v';
+        }
+
+        if (this.direction === 'horizontal' || this.direction === 'h') {
+            this.direction = 'h';
+        }
+
+        if (this.length <= 1) return;
+
+        this._init();
+    }
+
+    PageSlider.prototype = {
+        _init: function () {
+            var self = this;
+
+            //初始化CSS动画，好让滑动有缓动效果
+            this.target.css('-webkit-transition', '-webkit-transform 0.5s ease');
+
+            //如果是长页面
+            this.pages.each(function () {
+                var $this = $(this),
+                    $PageSliderWraper = $this.wrapInner('<div class="PageSlider__wraper"></div>').find('.PageSlider__wraper'),
                     height = $PageSliderWraper.height();
                 
                 //当子元素高度超过页面时，需滚完再切换
@@ -167,7 +203,7 @@
 
             //下面是在有手势跟随时的一些情况
             //1. 如果在第一屏或最后一屏，直接返回
-            if ((this.index <= 0="" &&="" endpos=""> startPos) || (this.index >= this.length - 1 && endPos < startPos)) {
+            if ((this.index <= 0 && endPos > startPos) || (this.index >= this.length - 1 && endPos < startPos)) {
                 e.preventDefault();
                 return;
             }
@@ -403,4 +439,3 @@ if (typeof define === "function" && define.amd) {
         return PageSlider;
     });
 }
-</ul></=></=>
