@@ -1055,7 +1055,7 @@ body {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ffddcf;
+  background: #c926ff;
 }
 .sidebar-nav {
   margin: 0;
@@ -2191,4 +2191,7 @@ ul li {
   max-width: 100%;
   width: auto;
   margin: 0;
+}
+.highlight {
+  -webkit-overflow-scrolling: touch;
 }
