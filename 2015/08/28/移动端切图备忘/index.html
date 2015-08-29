@@ -1,0 +1,690 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+    <meta name="description" content="记录 成长" />
+
+
+
+  <meta name="keywords" content="移动端," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+
+
+<meta name="description" content="作为一名刚接触移动端页面的孩子，总会遇到很多问题，如为什么 head 那里要加 viewport meta，为什么背景图片要用 二倍图 等等。我相信也有很多人跟你说，加 viewport 是为了让页面不缩放，让页面在手机上能1：1显示；用 二倍图 是因为 retina 屏1个像素被分为4个像素，所以模糊了，需要用大一倍的图片，让其显示正常。
+或许你哦了一声后也一直这么做，但是你事实上并不明白更细节">
+<meta property="og:type" content="article">
+<meta property="og:title" content="移动端切图备忘">
+<meta property="og:url" content="http://littledu.github.io/2015/08/28/移动端切图备忘/index.html">
+<meta property="og:site_name" content="小杜 -- 记录成长">
+<meta property="og:description" content="作为一名刚接触移动端页面的孩子，总会遇到很多问题，如为什么 head 那里要加 viewport meta，为什么背景图片要用 二倍图 等等。我相信也有很多人跟你说，加 viewport 是为了让页面不缩放，让页面在手机上能1：1显示；用 二倍图 是因为 retina 屏1个像素被分为4个像素，所以模糊了，需要用大一倍的图片，让其显示正常。
+或许你哦了一声后也一直这么做，但是你事实上并不明白更细节">
+<meta property="og:updated_time" content="2015-08-28T15:28:06.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="移动端切图备忘">
+<meta name="twitter:description" content="作为一名刚接触移动端页面的孩子，总会遇到很多问题，如为什么 head 那里要加 viewport meta，为什么背景图片要用 二倍图 等等。我相信也有很多人跟你说，加 viewport 是为了让页面不缩放，让页面在手机上能1：1显示；用 二倍图 是因为 retina 屏1个像素被分为4个像素，所以模糊了，需要用大一倍的图片，让其显示正常。
+或许你哦了一声后也一直这么做，但是你事实上并不明白更细节">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'post'
+  };
+</script>
+
+  <title> 移动端切图备忘 | 小杜 -- 记录成长 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?c8f8a944ca15c4967ed6e78f6a02c89c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">小杜 -- 记录成长</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br />
+            关于
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <form class="site-search-form">
+    <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+  </form>
+
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'BLP3x8GXj53LG4Y1FscG','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              移动端切图备忘
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-08-28T22:56:08+08:00" content="2015-08-28">
+            2015-08-28
+          </time>
+        </span>
+
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/08/28/移动端切图备忘/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/28/移动端切图备忘/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><p>作为一名刚接触移动端页面的孩子，总会遇到很多问题，如为什么 head 那里要加 <code>viewport meta</code>，为什么背景图片要用 <code>二倍图</code> 等等。我相信也有很多人跟你说，加 <code>viewport</code> 是为了让页面不缩放，让页面在手机上能1：1显示<br>；用 <code>二倍图</code> 是因为 <code>retina</code> 屏1个像素被分为4个像素，所以模糊了，需要用大一倍的图片，让其显示正常。</p>
+<p>或许你哦了一声后也一直这么做，但是你事实上并不明白更细节的原因。我也一直很困惑。因此查阅了不少资料，今天算是懵懵懂懂有点明白。站在巨人的肩膀上记录一下。</p>
+<a id="more"></a>
+<h2 id="为什么要加_viewport_meta">为什么要加 viewport meta</h2><p>先看个例子：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="doctype">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">html</span> <span class="attribute">lang</span>=<span class="value">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">charset</span>=<span class="value">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">title</span>&gt;</span>test<span class="tag">&lt;/<span class="title">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css"></span><br><span class="line">    *<span class="rules">&#123;<span class="rule"><span class="attribute">margin</span>:<span class="value"> <span class="number">0</span></span></span>; <span class="rule"><span class="attribute">padding</span>:<span class="value"> <span class="number">0</span></span></span>;&#125;</span></span><br><span class="line">    <span class="class">.box1</span><span class="rules">&#123;<span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">320px</span></span></span>; <span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">100px</span></span></span>; <span class="rule"><span class="attribute">background</span>:<span class="value"> red</span></span>;&#125;</span></span><br><span class="line">    <span class="class">.box2</span><span class="rules">&#123;<span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">980px</span></span></span>; <span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">100px</span></span></span>; <span class="rule"><span class="attribute">background</span>:<span class="value"> blue</span></span>;&#125;</span></span><br><span class="line">    </span><span class="tag">&lt;/<span class="title">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"box1"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"box2"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">html</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>如果你用iphone(320x640)的手机打开如上页面，你会发现，box1只占据屏幕一部分,box2是满屏的。为什么会这样？为什么 320px 在手机上看到的不是满屏的呢。</p>
+<p>其实，由于历史的原因，苹果创造了两个 <code>viewport</code>，分别是 <code>visual viewport</code> 和 <code>layout viewport</code> 。</p>
+<p>拿 320x640 的 iphone 作示例：<code>visual viewport</code> 就是屏幕的宽度 320；<code>layout viewport</code> 则是apple创造出来的一个虚拟容器，并规定了其宽度为 980px。相当于在 320px 的视觉容器(visual viewport)中，实际上有一个看不见的有 980px 的布局窗口(layout viewport)，例如当我们的页面设置一个 div 的宽度为100%时，这个 div 的实际值为 980px 而不是320px。所以，上面的 320px 宽 box1只占据屏幕一部分，而 980px 宽的 box2 能够满屏。</p>
+<blockquote>
+<p>注：不同浏览器的 layout viewport 设定的数值不一样</p>
+<ol>
+<li>Safari iPhone: 980px</li>
+<li>Opera: 850px</li>
+<li>Android WebKit: 800px</li>
+<li>Windows Phone 7: 1024px</li>
+</ol>
+</blockquote>
+<p>但这样同时带来不小的问题，很多专门为 iphone 设计的 320px 页面，都缩小了，这显然不是苹果希望的结果，于是，<code>viewport meta</code> 标签诞生了。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">meta</span> <span class="attribute">name</span>=<span class="value">”viewport”</span> <span class="attribute">content</span>=<span class="value">”width=device-width,</span> <span class="attribute">initial-scale</span>=<span class="value">1.0,</span> <span class="attribute">user-scalable</span>=<span class="value">no”</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+<p>width 表示 layout viewport 宽度。initial-scale 表示初始时的缩放比例，user-scalable 表示禁止用户缩放。  这样，上面的 meta 就把 layout viewport 的宽度设置为了跟设备的宽度(visual viewport) 一样大小。从而解决了专门为 iphone 设计的网页在手机上正常浏览。这也是我们为什么现在做手机端页面，都会先加 <code>viewport meta</code> 标签的原因了。</p>
+<h2 id="为什么要用二倍图">为什么要用二倍图</h2><p>关于二倍图，现在有太多的文章都解释了，从 CSS pixels，device pixels，PPI 解释到 devicePixelRatio。这里就不把这些概念再说一遍了。但是很多文章在介绍 devicePixelRatio 时，都有条公式 <code>devicePixelRatio = 屏幕物理像素/设备独立像素</code>，然后举例说明时，设备的独立像素都只说是 320px，但都没解释为什么是 320px，这里依然是历史原因。</p>
+<p>话说当年 iphone 流行的时候，太多太多为 iph<br>one 量身定制的网站都设置了 <code>viewport:width=device-width</code>，并且按照宽度320px来设计网页，导致了其他浏览器为了兼容性，都把 layout viewport 设置为了 320px，所以才有 iphone4 的 640/320 = 2，才有了二倍图的由来。但事实上现在分辨率越来越大，不少设备已经到达3倍了，但二倍的图片还算可以接受。所以直到现在都还强调二倍图。</p>
+<h2 id="HTML起始模版">HTML起始模版</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="doctype">&lt;!doctype html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">html</span> <span class="attribute">lang</span>=<span class="value">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">charset</span>=<span class="value">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="title">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">name</span>=<span class="value">"viewport"</span> <span class="attribute">content</span>=<span class="value">"width=device-width, initial-scale=1, user-scalable=no, minimal-ui"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">name</span>=<span class="value">"format-detection"</span> <span class="attribute">content</span>=<span class="value">"telephone=no, email=no"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这是我每次新建移动端页面时的默认模版，跟PC端的主要区别是多了两行 <code>meta</code>，</p>
+<h2 id="css_reset">css reset</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">html</span><span class="rules">&#123;<span class="rule"><span class="attribute">-webkit-text-size-adjust</span>:<span class="value"> <span class="number">100%</span></span></span>; <span class="rule"><span class="attribute">font-size</span>:<span class="value"> <span class="number">62.5%</span></span></span>;&#125;</span></span><br><span class="line"><span class="tag">body</span>, <span class="tag">div</span>, <span class="tag">dl</span>, <span class="tag">dt</span>, <span class="tag">dd</span>, <span class="tag">ul</span>, <span class="tag">ol</span>, <span class="tag">li</span>, <span class="tag">h1</span>, <span class="tag">h2</span>, <span class="tag">h3</span>, <span class="tag">h4</span>, <span class="tag">h5</span>, <span class="tag">h6</span>, <span class="tag">pre</span>, <span class="tag">code</span>, <span class="tag">form</span>, <span class="tag">fieldset</span>, <span class="tag">legend</span>, <span class="tag">input</span>,<span class="tag">button</span>, <span class="tag">textarea</span>, <span class="tag">p</span>, <span class="tag">blockquote</span>, <span class="tag">th</span>, <span class="tag">td</span>, <span class="tag">hr</span><span class="rules">&#123;<span class="rule"><span class="attribute">margin</span>:<span class="value"> <span class="number">0</span></span></span>; <span class="rule"><span class="attribute">padding</span>:<span class="value"> <span class="number">0</span></span></span>; <span class="rule"><span class="attribute">-webkit-box-sizing</span>:<span class="value"> border-box</span></span>;&#125;</span></span><br><span class="line"><span class="tag">body</span><span class="rules">&#123;<span class="rule"><span class="attribute">font-family</span>:<span class="value"> <span class="string">"Helvetica Neue"</span>, Helvetica, STHeiTi, Arial, sans-serif, <span class="string">"Microsoft YaHei"</span></span></span>; <span class="rule"><span class="attribute">font-size</span>:<span class="value"> <span class="number">14px</span></span></span>; <span class="rule"><span class="attribute">line-height</span>:<span class="value"> <span class="number">1.5</span></span></span>; <span class="rule"><span class="attribute">overflow-x</span>:<span class="value"> hidden</span></span>; <span class="rule"><span class="attribute">-webkit-overflow-scrolling</span>:<span class="value"> touch</span></span>;&#125;</span></span><br><span class="line"><span class="tag">article</span>, <span class="tag">aside</span>, <span class="tag">details</span>, <span class="tag">figcaption</span>, <span class="tag">figure</span>, <span class="tag">footer</span>, <span class="tag">header</span>, <span class="tag">hgroup</span>, <span class="tag">main</span>, <span class="tag">nav</span>, <span class="tag">section</span>, <span class="tag">summary</span><span class="rules">&#123;<span class="rule"><span class="attribute">display</span>:<span class="value"> block</span></span>;&#125;</span></span><br><span class="line"><span class="tag">audio</span>, <span class="tag">canvas</span>, <span class="tag">progress</span>, <span class="tag">video</span><span class="rules">&#123;<span class="rule"><span class="attribute">display</span>:<span class="value"> inline-block</span></span>; <span class="rule"><span class="attribute">vertical-align</span>:<span class="value"> baseline</span></span>;&#125;</span></span><br><span class="line"><span class="rule"><span class="attribute">audio</span>:<span class="value"><span class="function">not</span>([controls])&#123;display: none</span></span>; <span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">0</span></span></span>;&#125;</span><br><span class="line"><span class="attr_selector">[hidden]</span>, <span class="tag">template</span><span class="rules">&#123;<span class="rule"><span class="attribute">display</span>:<span class="value"> none</span></span>;&#125;</span></span><br><span class="line"><span class="rule"><span class="attribute">svg</span>:<span class="value"><span class="function">not</span>(:root)&#123;overflow: hidden</span></span>;&#125;</span><br><span class="line"><span class="tag">a</span><span class="rules">&#123;<span class="rule"><span class="attribute">background</span>:<span class="value"> transparent</span></span>; <span class="rule"><span class="attribute">text-decoration</span>:<span class="value"> none</span></span>; <span class="rule"><span class="attribute">-webkit-tap-highlight-color</span>:<span class="value"> transparent</span></span>;&#125;</span></span><br><span class="line"><span class="rule"><span class="attribute">a</span>:<span class="value">active&#123;outline: <span class="number">0</span></span></span>;&#125;</span><br><span class="line"><span class="tag">abbr</span><span class="attr_selector">[title]</span><span class="rules">&#123;<span class="rule"><span class="attribute">border-bottom</span>:<span class="value"> <span class="number">1px</span> dotted</span></span>;&#125;</span></span><br><span class="line"><span class="tag">b</span>, <span class="tag">strong</span><span class="rules">&#123;<span class="rule"><span class="attribute">font-weight</span>:<span class="value"> bold</span></span>;&#125;</span></span><br><span class="line"><span class="tag">dfn</span><span class="rules">&#123;<span class="rule"><span class="attribute">font-style</span>:<span class="value"> italic</span></span>;&#125;</span></span><br><span class="line"><span class="tag">mark</span><span class="rules">&#123;<span class="rule"><span class="attribute">background</span>:<span class="value"> <span class="hexcolor">#ff0</span></span></span>; <span class="rule"><span class="attribute">color</span>:<span class="value"> <span class="hexcolor">#000</span></span></span>;&#125;</span></span><br><span class="line"><span class="tag">small</span><span class="rules">&#123;<span class="rule"><span class="attribute">font-size</span>:<span class="value"> <span class="number">80%</span></span></span>;&#125;</span></span><br><span class="line"><span class="tag">sub</span>, <span class="tag">sup</span><span class="rules">&#123;<span class="rule"><span class="attribute">font-size</span>:<span class="value"> <span class="number">75%</span></span></span>; <span class="rule"><span class="attribute">line-height</span>:<span class="value"> <span class="number">0</span></span></span>; <span class="rule"><span class="attribute">position</span>:<span class="value"> relative</span></span>; <span class="rule"><span class="attribute">vertical-align</span>:<span class="value"> baseline</span></span>;&#125;</span></span><br><span class="line"><span class="tag">sup</span><span class="rules">&#123;<span class="rule"><span class="attribute">top</span>:<span class="value"> -<span class="number">0.5em</span></span></span>;&#125;</span></span><br><span class="line"><span class="tag">sub</span><span class="rules">&#123;<span class="rule"><span class="attribute">bottom</span>:<span class="value"> -<span class="number">0.25em</span></span></span>;&#125;</span></span><br><span class="line"><span class="tag">img</span><span class="rules">&#123;<span class="rule"><span class="attribute">border</span>:<span class="value"> <span class="number">0</span></span></span>;&#125;</span></span><br><span class="line"><span class="tag">hr</span><span class="rules">&#123;<span class="rule"><span class="attribute">box-sizing</span>:<span class="value"> content-box</span></span>; <span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">0</span></span></span>;&#125;</span></span><br><span class="line"><span class="tag">pre</span><span class="rules">&#123;<span class="rule"><span class="attribute">overflow</span>:<span class="value"> auto</span></span>; <span class="rule"><span class="attribute">white-space</span>:<span class="value"> pre</span></span>; <span class="rule"><span class="attribute">white-space</span>:<span class="value"> pre-wrap</span></span>; <span class="rule"><span class="attribute">word-wrap</span>:<span class="value"> break-word</span></span>;&#125;</span></span><br><span class="line"><span class="tag">code</span>, <span class="tag">kbd</span>, <span class="tag">pre</span>, <span class="tag">samp</span><span class="rules">&#123;<span class="rule"><span class="attribute">font-family</span>:<span class="value"> monospace, monospace</span></span>; <span class="rule"><span class="attribute">font-size</span>:<span class="value"> <span class="number">1em</span></span></span>;&#125;</span></span><br><span class="line"><span class="tag">button</span>, <span class="tag">input</span>, <span class="tag">optgroup</span>, <span class="tag">select</span>, <span class="tag">textarea</span><span class="rules">&#123;<span class="rule"><span class="attribute">color</span>:<span class="value"> inherit</span></span>; <span class="rule"><span class="attribute">font</span>:<span class="value"> inherit</span></span>; <span class="rule"><span class="attribute">margin</span>:<span class="value"> <span class="number">0</span></span></span>;&#125;</span></span><br><span class="line"><span class="tag">button</span><span class="rules">&#123;<span class="rule"><span class="attribute">overflow</span>:<span class="value"> visible</span></span>;&#125;</span></span><br><span class="line"><span class="tag">button</span>, <span class="tag">select</span><span class="rules">&#123;<span class="rule"><span class="attribute">text-transform</span>:<span class="value"> none</span></span>;&#125;</span></span><br><span class="line"><span class="tag">button</span>, <span class="tag">html</span> <span class="tag">input</span><span class="attr_selector">[type="button"]</span>, <span class="tag">input</span><span class="attr_selector">[type="reset"]</span>, <span class="tag">input</span><span class="attr_selector">[type="submit"]</span><span class="rules">&#123;<span class="rule"><span class="attribute">-webkit-appearance</span>:<span class="value"> button</span></span>; <span class="rule"><span class="attribute">cursor</span>:<span class="value"> pointer</span></span>;&#125;</span></span><br><span class="line"><span class="tag">button</span><span class="attr_selector">[disabled]</span>, <span class="tag">html</span> <span class="tag">input</span><span class="attr_selector">[disabled]</span><span class="rules">&#123;<span class="rule"><span class="attribute">cursor</span>:<span class="value"> default</span></span>;&#125;</span></span><br><span class="line"><span class="tag">input</span><span class="rules">&#123;<span class="rule"><span class="attribute">line-height</span>:<span class="value"> normal</span></span>;&#125;</span></span><br><span class="line"><span class="tag">input</span><span class="attr_selector">[type="checkbox"]</span>, <span class="tag">input</span><span class="attr_selector">[type="radio"]</span><span class="rules">&#123;<span class="rule"><span class="attribute">box-sizing</span>:<span class="value"> border-box</span></span>; <span class="rule"><span class="attribute">padding</span>:<span class="value"> <span class="number">0</span></span></span>;&#125;</span></span><br><span class="line"><span class="tag">input</span><span class="attr_selector">[type="number"]</span><span class="pseudo">::-webkit-inner-spin-button</span>, <span class="tag">input</span><span class="attr_selector">[type="number"]</span><span class="pseudo">::-webkit-outer-spin-button</span><span class="rules">&#123;<span class="rule"><span class="attribute">height</span>:<span class="value"> auto</span></span>;&#125;</span></span><br><span class="line"><span class="tag">input</span><span class="attr_selector">[type="search"]</span><span class="rules">&#123;<span class="rule"><span class="attribute">-webkit-appearance</span>:<span class="value"> textfield</span></span>; <span class="rule"><span class="attribute">-webkit-box-sizing</span>:<span class="value"> border-box</span></span>; <span class="rule"><span class="attribute">box-sizing</span>:<span class="value"> border-box</span></span>;&#125;</span></span><br><span class="line"><span class="tag">input</span><span class="attr_selector">[type="search"]</span><span class="pseudo">::-webkit-search-cancel-button</span>, <span class="tag">input</span><span class="attr_selector">[type="search"]</span><span class="pseudo">::-webkit-search-decoration</span><span class="rules">&#123;<span class="rule"><span class="attribute">-webkit-appearance</span>:<span class="value"> none</span></span>;&#125;</span></span><br><span class="line"><span class="tag">fieldset</span><span class="rules">&#123;<span class="rule"><span class="attribute">border</span>:<span class="value"> <span class="number">1px</span> solid <span class="hexcolor">#c0c0c0</span></span></span>; <span class="rule"><span class="attribute">margin</span>:<span class="value"> <span class="number">0</span> <span class="number">2px</span></span></span>; <span class="rule"><span class="attribute">padding</span>:<span class="value"> <span class="number">0.35em</span> <span class="number">0.625em</span> <span class="number">0.75em</span></span></span>;&#125;</span></span><br><span class="line"><span class="tag">legend</span><span class="rules">&#123;<span class="rule"><span class="attribute">border</span>:<span class="value"> <span class="number">0</span></span></span>; <span class="rule"><span class="attribute">padding</span>:<span class="value"> <span class="number">0</span></span></span>;&#125;</span></span><br><span class="line"><span class="tag">textarea</span><span class="rules">&#123;<span class="rule"><span class="attribute">overflow</span>:<span class="value"> auto</span></span>; <span class="rule"><span class="attribute">resize</span>:<span class="value"> vertical</span></span>;&#125;</span></span><br><span class="line"><span class="tag">optgroup</span><span class="rules">&#123;<span class="rule"><span class="attribute">font-weight</span>:<span class="value"> bold</span></span>;&#125;</span></span><br><span class="line"><span class="tag">table</span><span class="rules">&#123;<span class="rule"><span class="attribute">border-collapse</span>:<span class="value"> collapse</span></span>; <span class="rule"><span class="attribute">border-spacing</span>:<span class="value"> <span class="number">0</span></span></span>;&#125;</span></span><br><span class="line"><span class="tag">td</span>, <span class="tag">th</span><span class="rules">&#123;<span class="rule"><span class="attribute">padding</span>:<span class="value"> <span class="number">0</span></span></span>;&#125;</span></span><br><span class="line"><span class="tag">ul</span>, <span class="tag">ol</span><span class="rules">&#123;<span class="rule"><span class="attribute">list-style</span>:<span class="value"> none outside none</span></span>;&#125;</span></span><br><span class="line"><span class="tag">h1</span>, <span class="tag">h2</span>, <span class="tag">h3</span> <span class="rules">&#123;<span class="rule"><span class="attribute">line-height</span>:<span class="value"> <span class="number">2</span></span></span>; <span class="rule"><span class="attribute">font-weight</span>:<span class="value"> normal</span></span>;&#125;</span></span><br><span class="line"><span class="tag">h1</span><span class="rules">&#123;<span class="rule"><span class="attribute">font-size</span>:<span class="value"> <span class="number">18px</span></span></span>;&#125;</span></span><br><span class="line"><span class="tag">h2</span><span class="rules">&#123;<span class="rule"><span class="attribute">font-size</span>:<span class="value"> <span class="number">16px</span></span></span>;&#125;</span></span><br><span class="line"><span class="tag">h3</span><span class="rules">&#123; <span class="rule"><span class="attribute">font-size</span>:<span class="value"> <span class="number">14px</span></span></span>;&#125;</span></span><br><span class="line"><span class="rule"><span class="attribute">input</span>:<span class="value">:-webkit-input-placeholder, textarea::-webkit-input-placeholder&#123;color: <span class="hexcolor">#ccc</span></span></span>;&#125;</span><br></pre></td></tr></table></figure>
+<p>这里基本抄的 <a href="https://github.com/necolas/normalize.css/blob/master/normalize.css" target="_blank" rel="external">normalize</a>，PC与移动端通用。之所以不用 <code>rem</code> 而改为 <code>px</code>，是因为 chrome 对 rem 的渲染还有不足，故暂时不用它，详情可点击： <a href="http://note.sdo.com/u/634718107660171185/n/bBXuN~l1zG2a4M2DY000cr" target="_blank" rel="external">http://note.sdo.com/u/634718107660171185/n/bBXuN~l1zG2a4M2DY000cr</a></p>
+<h2 id="flex_应用">flex 应用</h2><p>如果说写手机页面最常用的技术是什么，我认为是 <code>flex</code>，为了让内容自适应，等分，水平居中，垂直居中，我们都可以直接使用 flex 解决，事实上，它的表现跟 table 类似。<br>但 flex 麻烦的一点是需要写点兼容，因为它在成长的过程中，出现了不同的规范定义，造成现在不同系统对其支持的写法不一样，故麻烦了一点，这里当成代码片段总结一下。</p>
+<h3 id="1-_等分">1. 等分</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.parent</span><span class="rules">&#123;<span class="rule"><span class="attribute">display</span>:<span class="value"> -webkit-box</span></span>; <span class="rule"><span class="attribute">display</span>:<span class="value"> -webkit-flex</span></span>; <span class="rule"><span class="attribute">display</span>:<span class="value"> flex</span></span>;&#125;</span></span><br><span class="line"><span class="class">.child</span><span class="rules">&#123;<span class="rule"><span class="attribute">-webkit-box-flex</span>:<span class="value"> <span class="number">1</span></span></span>; <span class="rule"><span class="attribute">-webkit-flex</span>:<span class="value"> <span class="number">1</span></span></span>; <span class="rule"><span class="attribute">flex</span>:<span class="value"> <span class="number">1</span></span></span>;&#125;</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-_水平居中">2. 水平居中</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.parent</span><span class="rules">&#123;<span class="rule"><span class="attribute">display</span>:<span class="value"> -webkit-box</span></span>; <span class="rule"><span class="attribute">display</span>:<span class="value"> -webkit-flex</span></span>; <span class="rule"><span class="attribute">display</span>:<span class="value"> flex</span></span>; <span class="rule"><span class="attribute">-webkit-box-pack</span>:<span class="value"> center</span></span>; <span class="rule"><span class="attribute">-webkit-justify-content</span>:<span class="value"> center</span></span>; <span class="rule"><span class="attribute">justify-content</span>:<span class="value"> center</span></span>;&#125;</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-_垂直居中">3. 垂直居中</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.parent</span><span class="rules">&#123;<span class="rule"><span class="attribute">display</span>:<span class="value"> -webkit-box</span></span>; <span class="rule"><span class="attribute">display</span>:<span class="value"> -webkit-flex</span></span>; <span class="rule"><span class="attribute">display</span>:<span class="value"> flex</span></span>; <span class="rule"><span class="attribute">-webkit-box-align</span>:<span class="value"> center</span></span>; <span class="rule"><span class="attribute">-webkit-align-items</span>:<span class="value"> center</span></span>; <span class="rule"><span class="attribute">align-items</span>:<span class="value"> center</span></span>;&#125;</span></span><br></pre></td></tr></table></figure>
+<pre><code>注1：上面 <span class="tag">parent</span> 代表父元素，<span class="tag">child</span> 代表子元素，水平垂直居中把上面的分别合并起来即可。
+注2： 在有了 <span class="tag">flex</span> 之后，现在很多弹窗组件的结构也在发生着变化，以前遮罩层都是与弹窗分开的，现在在移动端，完全可以直接嵌套起来，如： <span class="tag">div</span><span class="class">.overlay</span>&gt;<span class="tag">div</span><span class="class">.pop</span> , 然后 <span class="tag">overlay</span> 层 <span class="rule"><span class="attribute">position</span>:<span class="value"> fixed</span></span>; <span class="rule"><span class="attribute">top</span>:<span class="value"> <span class="number">0</span></span></span>; <span class="rule"><span class="attribute">bottom</span>:<span class="value"> <span class="number">0</span></span></span>; <span class="rule"><span class="attribute">left</span>:<span class="value"> <span class="number">0</span></span></span>; <span class="rule"><span class="attribute">right</span>:<span class="value"> <span class="number">0</span></span></span>; <span class="tag">pop</span> 层作水平垂直居中即可
+</code></pre><h2 id="zepto-js">zepto.js</h2><p>关于 zepto ，事实上，作为一名重构在工作上基本不用接触到，这里把自己之前使用它遇到的坑做下记录。</p>
+<h3 id="1-_zepto_打包">1. zepto 打包</h3><p>zepto 默认只加载 <code>zepto</code>、<code>event</code>、<code>ajax</code>、<code>form</code>、<code>ie</code> 模块，故不要妄想一使用zepto就想调用 <code>tap</code>等事件。需加载相应模块编译才可以。<br>参考 <a href="https://github.com/madrobby/zepto" target="_blank" rel="external">https://github.com/madrobby/zepto</a> 官网的编译说明。</p>
+<pre><code>注： 下载下来后在 <span class="escape">`m</span>ake<span class="escape">` </span>文件里找到 <span class="escape">`m</span>odules = (env['MODULES'] || 'zepto detect event ...').split(' ')<span class="escape">` </span>,添加 <span class="escape">`t</span>ouch<span class="escape">` </span>，参照上面官网说明编译即可。
+</code></pre><p>这里有我基于 zepto 1.1.4 编译好的一份包含 touch 模块的 zepto.js <a href="http://files.cnblogs.com/littledu/zepto.min.js" target="_blank" rel="external">点击下载</a>。</p>
+<h3 id="2-_点透修复">2. 点透修复</h3><p>点透，就是在元素绑定 tap 事件，进行元素的隐藏或移动位置时，其底下的元素刚好绑定了 click 事件或有web响应的元素时，会触发底下元素的响应，形成 <code>穿透</code> 一样的效果，我们也称之为 <code>点透</code>。<br>在使用 zepto 的 tap 方法时，就会发生点透现象。</p>
+<h4 id="解决方法：">解决方法：</h4><ol>
+<li>不要使用 <code>click</code> 事件，用 <code>tap</code> 代替</li>
+<li>使用 <code>fastclick</code>： <a href="https://github.com/ftlabs/fastclick" target="_blank" rel="external">https://github.com/ftlabs/fastclick</a></li>
+</ol>
+<h2 id="css_横屏代码">css 横屏代码</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="at_rule">@<span class="keyword">media</span> screen and (min-aspect-ratio: <span class="number">13</span>/<span class="number">9</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>之所以不使用 <code>@media screen and (orientation:landscape) {}</code> 是因为在安卓和IOS7下呼出软键盘的时候，会错误的触发横屏代码，具体可查看以下链接：<br><a href="http://blog.abouthalf.com/development/orientation-media-query-challenges-in-android-browsers/" target="_blank" rel="external">http://blog.abouthalf.com/development/orientation-media-query-challenges-in-android-browsers/</a></p>
+<p><strong>未完待续…</strong></p>
+<h2 id="参考文章">参考文章</h2><p><a href="http://www.w3cplus.com/mobile/mobile-terminal-refactoring-create-page.html" target="_blank" rel="external">http://www.w3cplus.com/mobile/mobile-terminal-refactoring-create-page.html</a><br><a href="http://www.w3cplus.com/mobile/mobile-terminal-refactoring-uniform-and-center.html" target="_blank" rel="external">http://www.w3cplus.com/mobile/mobile-terminal-refactoring-uniform-and-center.html</a><br><a href="http://www.w3cplus.com/mobile/mobile-terminal-refactoring-icons.html" target="_blank" rel="external">http://www.w3cplus.com/mobile/mobile-terminal-refactoring-icons.html</a><br><a href="http://www.w3cplus.com/mobile/mobile-terminal-refactoring-scroll.html" target="_blank" rel="external">http://www.w3cplus.com/mobile/mobile-terminal-refactoring-scroll.html</a><br><a href="http://hax.iteye.com/blog/978184" target="_blank" rel="external">http://hax.iteye.com/blog/978184</a><br><a href="http://weizhifeng.net/viewports2.html" target="_blank" rel="external">http://weizhifeng.net/viewports2.html</a><br><a href="http://www.qianduan.net/mobile-webapp-develop-essential-knowledge.html" target="_blank" rel="external">http://www.qianduan.net/mobile-webapp-develop-essential-knowledge.html</a><br><a href="http://www.w3cplus.com/css/A-pixel-is-not-a-pixel-is-not-a-pixel.html" target="_blank" rel="external">http://www.w3cplus.com/css/A-pixel-is-not-a-pixel-is-not-a-pixel.html</a></p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/移动端/" rel="tag">#移动端</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/08/28/CSS中的两端对齐/" rel="prev">CSS中的两端对齐</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+              <div class="ds-thread" data-thread-key="2015/08/28/移动端切图备忘/"
+                   data-title="移动端切图备忘" data-url="http://littledu.github.io/2015/08/28/移动端切图备忘/">
+              </div>
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="http://temp.im/192x192" alt="Littledu" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Littledu</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">记录 成长</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            
+              <span class="site-state-item-count">0</span>
+              <span class="site-state-item-name">分类</span>
+              
+          </div>
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/littledu" target="_blank">GitHub</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/1763981464" target="_blank">Weibo</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么要加_viewport_meta"><span class="nav-number">1.</span> <span class="nav-text">为什么要加 viewport meta</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么要用二倍图"><span class="nav-number">2.</span> <span class="nav-text">为什么要用二倍图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTML起始模版"><span class="nav-number">3.</span> <span class="nav-text">HTML起始模版</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#css_reset"><span class="nav-number">4.</span> <span class="nav-text">css reset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#flex_应用"><span class="nav-number">5.</span> <span class="nav-text">flex 应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-_等分"><span class="nav-number">5.1.</span> <span class="nav-text">1. 等分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-_水平居中"><span class="nav-number">5.2.</span> <span class="nav-text">2. 水平居中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-_垂直居中"><span class="nav-number">5.3.</span> <span class="nav-text">3. 垂直居中</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#zepto-js"><span class="nav-number">6.</span> <span class="nav-text">zepto.js</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-_zepto_打包"><span class="nav-number">6.1.</span> <span class="nav-text">1. zepto 打包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-_点透修复"><span class="nav-number">6.2.</span> <span class="nav-text">2. 点透修复</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#解决方法："><span class="nav-number">6.2.1.</span> <span class="nav-text">解决方法：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#css_横屏代码"><span class="nav-number">7.</span> <span class="nav-text">css 横屏代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文章"><span class="nav-number">8.</span> <span class="nav-text">参考文章</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp; 
+  <span itemprop="copyrightYear">2015</span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Littledu</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"littledu"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+  	<script src="/js/ua-parser.min.js"></script>
+  	<script src="/js/hook-duoshuo.js"></script>
+  
+
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>
