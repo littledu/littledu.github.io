@@ -1,0 +1,701 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+    <meta name="description" content="记录 成长" />
+
+
+
+  <meta name="keywords" content="Hexo,next" />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+
+
+<meta name="description" content="最近做个小东西涉及到了数据库，因此接触到了 Sequelize 这个关系型数据库(ORM)[^orm]框架。用起来感觉很不错(事实上我也没用过其他)，但他的文档非常不友好，搜索功能基本是废的，文档还很冗长，想查点东西非常不方便，故想把我对他的使用记录下来，方便自己以后查阅。
+
+注意：现代文明发展太快，很多时候，隔个半年时间代码就有可能发生了很大变化，导致跟现实不符，这里使用的 Sequelize">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sequelize">
+<meta property="og:url" content="http://littledu.github.io/2015/09/26/Sequelize/index.html">
+<meta property="og:site_name" content="小杜 -- 记录成长">
+<meta property="og:description" content="最近做个小东西涉及到了数据库，因此接触到了 Sequelize 这个关系型数据库(ORM)[^orm]框架。用起来感觉很不错(事实上我也没用过其他)，但他的文档非常不友好，搜索功能基本是废的，文档还很冗长，想查点东西非常不方便，故想把我对他的使用记录下来，方便自己以后查阅。
+
+注意：现代文明发展太快，很多时候，隔个半年时间代码就有可能发生了很大变化，导致跟现实不符，这里使用的 Sequelize">
+<meta property="og:image" content="http://littledu.github.io/./1442765937985.png">
+<meta property="og:updated_time" content="2015-09-26T13:40:10.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Sequelize">
+<meta name="twitter:description" content="最近做个小东西涉及到了数据库，因此接触到了 Sequelize 这个关系型数据库(ORM)[^orm]框架。用起来感觉很不错(事实上我也没用过其他)，但他的文档非常不友好，搜索功能基本是废的，文档还很冗长，想查点东西非常不方便，故想把我对他的使用记录下来，方便自己以后查阅。
+
+注意：现代文明发展太快，很多时候，隔个半年时间代码就有可能发生了很大变化，导致跟现实不符，这里使用的 Sequelize">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'post'
+  };
+</script>
+
+  <title> Sequelize | 小杜 -- 记录成长 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?c8f8a944ca15c4967ed6e78f6a02c89c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">小杜 -- 记录成长</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br />
+            关于
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <form class="site-search-form">
+    <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+  </form>
+
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', '__imFLxLVLj7Bxzxq_uu','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              Sequelize
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-09-26T21:39:50+08:00" content="2015-09-26">
+            2015-09-26
+          </time>
+        </span>
+
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/09/26/Sequelize/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/26/Sequelize/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><p>最近做个小东西涉及到了数据库，因此接触到了 <a href="http://sequelizejs.com/" target="_blank" rel="external">Sequelize</a> 这个关系型数据库(ORM)[^orm]框架。用起来感觉很不错(事实上我也没用过其他)，但他的文档非常不友好，搜索功能基本是废的，文档还很冗长，想查点东西非常不方便，故想把我对他的使用记录下来，方便自己以后查阅。</p>
+<blockquote>
+<p>注意：现代文明发展太快，很多时候，隔个半年时间代码就有可能发生了很大变化，导致跟现实不符，这里使用的 Sequelize 版本是 3.9.0</p>
+</blockquote>
+<h2 id="安装">安装</h2><h3 id="1-_安装_Mysql">1. 安装 Mysql</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install mysql</span><br></pre></td></tr></table></figure>
+<p>这里使用 mysql。</p>
+<a id="more"></a>
+<h3 id="2-_安装_Sequel_Pro">2. 安装 Sequel Pro</h3><p>官网地址：<a href="http://www.sequelpro.com/" target="_blank" rel="external">http://www.sequelpro.com/</a>  。<br>类似 myphpadmin，是一个可视化操作工具，界面简洁，功能强大，强烈推荐。</p>
+<h3 id="3-_安装_Sequelize">3. 安装 Sequelize</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ npm install --save sequelize</span><br><span class="line">$ npm install --save mysql</span><br></pre></td></tr></table></figure>
+<p>以上安装完成后，准备工作就算完成了，相信也不需要我讲如何安装 node 环境。直接进入主题。</p>
+<h2 id="快速入门">快速入门</h2><p>首先，你需要利用 Sequel 创建一个数据库，Sequel 默认会有一个 <code>test</code> 数据库，这里直接用它做测试。<br>接着创建一个文件写入如下代码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Sequelize = <span class="built_in">require</span>(<span class="string">'sequelize'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//连接数据库</span></span><br><span class="line"><span class="comment">//var sequelize = new Sequelize('database', 'username', 'password');</span></span><br><span class="line"><span class="keyword">var</span> sequelize = <span class="keyword">new</span> Sequelize(<span class="string">'test'</span>, <span class="string">'root'</span>, <span class="string">''</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//定义表结构</span></span><br><span class="line"><span class="keyword">var</span> User = sequelize.define(<span class="string">'user'</span>, &#123;</span><br><span class="line">    firstName: Sequelize.STRING,</span><br><span class="line">    lastName: Sequelize.STRING</span><br><span class="line">&#125;, &#123;</span><br><span class="line">	<span class="comment">//设置表名跟定义的一样，如果不设置，默认会加s,如 'users'。</span></span><br><span class="line">    freezeTableName: <span class="literal">true</span>  </span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//创建表并写入内容</span></span><br><span class="line">User.sync(&#123;force: <span class="literal">true</span>&#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> User.create(&#123;</span><br><span class="line">        firstName: <span class="string">'little'</span>,</span><br><span class="line">        lastName: <span class="string">'du'</span></span><br><span class="line">    &#125;)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>运行后结果如图：<br><img src="./1442765937985.png" alt="Alt text"></p>
+<p>如果没有特殊设置，Sequelize 默认会添加两个字段： createdAt 和 updatedAt。或许它认为这是两个很常用的字段吧。</p>
+<p>通过上面的代码示例，展示了 sequelize 操作数据库的基本流程：<code>连接数据库 -&gt; 定义模型 -&gt; 操作数据库</code>。<br>下面，我们就一一介绍一下。</p>
+<h2 id="连接数据库">连接数据库</h2><p> Sequelize 对象的定义为：<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Sequelize(database, [username=<span class="keyword">null</span>], [password=<span class="keyword">null</span>], [<span class="keyword">options</span>=&#123;&#125;])</span><br></pre></td></tr></table></figure></p>
+<p>很明显第 1 个参数为数据库的名字，第 2 个为用户名，第 3 个密码，第 4 个为附加的信息设置。我们直接看官方的示例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//当然得先引入模块啦</span></span><br><span class="line"><span class="keyword">var</span> Sequelize = <span class="built_in">require</span>(<span class="string">'sequelize'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// without password and options</span></span><br><span class="line"><span class="keyword">var</span> sequelize = <span class="keyword">new</span> Sequelize(<span class="string">'database'</span>, <span class="string">'username'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// without options</span></span><br><span class="line"><span class="keyword">var</span> sequelize = <span class="keyword">new</span> Sequelize(<span class="string">'database'</span>, <span class="string">'username'</span>, <span class="string">'password'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// without password / with blank password</span></span><br><span class="line"><span class="keyword">var</span> sequelize = <span class="keyword">new</span> Sequelize(<span class="string">'database'</span>, <span class="string">'username'</span>, <span class="literal">null</span>, &#123;&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// with password and options</span></span><br><span class="line"><span class="keyword">var</span> sequelize = <span class="keyword">new</span> Sequelize(<span class="string">'my_database'</span>, <span class="string">'john'</span>, <span class="string">'doe'</span>, &#123;&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// with uri (see below)</span></span><br><span class="line"><span class="keyword">var</span> sequelize = <span class="keyword">new</span> Sequelize(<span class="string">'mysql://localhost:3306/database'</span>, &#123;&#125;)</span><br></pre></td></tr></table></figure>
+<p>连接数据库就是 new 一下 Sequelize 的实例，更详细的说明，如 options，可查看官方文档列表：<br><a href="http://docs.sequelizejs.com/en/latest/api/sequelize/#class-sequelize" target="_blank" rel="external">http://docs.sequelizejs.com/en/latest/api/sequelize/#class-sequelize</a></p>
+<h2 id="定义模型">定义模型</h2><p>连接数据库后，需要做的就是定义表的结构，字段的属性等。在 Sequelize 里通过 <code>sequelize.define</code> 和 <code>sequelize.import</code> 来完成这个操作。</p>
+<h3 id="1-_sequelize-define">1. sequelize.define</h3><p>define 函数的定义为：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">define(modelName, attributes, [options])</span><br></pre></td></tr></table></figure></p>
+<p>支持 3 个参数，第 1 个为模型的名字，就是表名;第 2 个是属性，也是字段的定义，第3 个为可选的一个附加信息，用于定义表的一些特殊设置。</p>
+<p>在快速入门那里，我们就已经使用过 define 了，也是最基本的模型定义：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义表结构</span></span><br><span class="line"><span class="keyword">var</span> User = sequelize.define(<span class="string">'user'</span>, &#123;</span><br><span class="line">    firstName: Sequelize.STRING,</span><br><span class="line">    lastName: Sequelize.STRING</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>如果字段的属性多于一个，还可以如下设置：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义表结构</span></span><br><span class="line"><span class="keyword">var</span> Foo = sequelize.define(<span class="string">'foo'</span>, &#123;</span><br><span class="line">    flag: &#123;type: Sequelize.BOOLEAN, allowNull: <span class="literal">false</span>, defaultValue: <span class="literal">true</span>&#125;,</span><br><span class="line">    myDate: &#123; type: Sequelize.DATE, defaultValue: Sequelize.NOW &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>define 一般是在同一个文件里面就进行了模型的定义和操作，当我们的表很多的时候，文件行数就会很多，维护的复杂度也就增加了，因此，Sequelize 还提供了 <code>import</code> 方法实现将模型的定义与操作分离。</p>
+<h3 id="2-_sequelize-import">2. sequelize.import</h3><p>我们还可以将模型的定义单独保存为一个文件，然后通过 import 将模型导入，一个模型(表)为一个文件，将是一个最佳实践。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// project.js 文件里的模型定义</span></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params">sequelize, DataTypes</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> sequelize.define(<span class="string">"Project"</span>, &#123;</span><br><span class="line">    name: DataTypes.STRING,</span><br><span class="line">    description: DataTypes.TEXT</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app.js 文件里将模型导入进来</span></span><br><span class="line"><span class="keyword">var</span> Project = sequelize.import(__dirname + <span class="string">"/path/to/models/project"</span>)</span><br></pre></td></tr></table></figure>
+<p>如上，我们在 project.js 文件里面定义了 Project 的模型，然后在 app.js 里面通过 import 方法就可以将模型文件导入进来，定义与操作分离，一个模型为一个文件，将大大降低我们维护的复杂度。</p>
+<blockquote>
+<p><strong>扩展：</strong>与 model 相关的文档：</p>
+<ul>
+<li><a href="http://docs.sequelizejs.com/en/latest/api/sequelize/#definemodelname-attributes-options-model" target="_blank" rel="external">define</a></li>
+<li><a href="http://docs.sequelizejs.com/en/latest/api/datatypes" target="_blank" rel="external">DataTypes</a></li>
+<li><a href="http://docs.sequelizejs.com/en/latest/docs/models-definition/#getters-setters" target="_blank" rel="external">getter/setter</a></li>
+<li><a href="http://docs.sequelizejs.com/en/latest/docs/models-definition/#configuration" target="_blank" rel="external">Configuration</a></li>
+<li><a href="http://docs.sequelizejs.com/en/latest/docs/models-definition/#validations" target="_blank" rel="external">Validations</a></li>
+</ul>
+</blockquote>
+<h2 id="数据库操作">数据库操作</h2><p>当数据库连接完成，表的模型也定义完成，接下来就是对表的各种操作，如创建，查询，更新，销毁等等。接下来，我们以上面快速入门定义的 <code>User</code> 模型为例，简单的当代码片段列举一下。</p>
+<h3 id="1-_创建表">1. 创建表</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//根据 User 模型创建表</span></span><br><span class="line">User.sync().then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="comment">//callback</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//强行创建，即会先删除同名的表再创建，慎用</span></span><br><span class="line">User.sync(&#123;&#123;force: <span class="literal">true</span>&#125;&#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="comment">//callback</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="2-_查询">2. 查询</h3><h4 id="1-_findById">1. findById</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 通过 id 查询，理论上不常用</span></span><br><span class="line">User.findById(<span class="number">3</span>).then(<span class="function"><span class="keyword">function</span>(<span class="params">result</span>) </span>&#123;</span><br><span class="line">   <span class="comment">//callback</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="2-_findOne">2. findOne</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 只找一条，找到就返回了，不会继续往下找</span></span><br><span class="line">User.findOne(&#123;</span><br><span class="line">	where: &#123;firstName: <span class="string">'little'</span>&#125;</span><br><span class="line">&#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params">result</span>) </span>&#123;</span><br><span class="line">   <span class="comment">//callback</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="3-_findOrCreate">3. findOrCreate</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//如果找不到，则创建一条</span></span><br><span class="line">User.findOrCreate(&#123;</span><br><span class="line">	where: &#123;firstName: <span class="string">'dududu'</span>&#125;</span><br><span class="line">&#125;).spread(<span class="function"><span class="keyword">function</span>(<span class="params">user, created</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(user.get(&#123;</span><br><span class="line">        plain: <span class="literal">true</span></span><br><span class="line">    &#125;));</span><br><span class="line"></span><br><span class="line">	<span class="comment">//如果是创建的，这里返回 true，如果已存在，则为 false</span></span><br><span class="line">    <span class="built_in">console</span>.log(created);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="4-_findAndCountAll">4. findAndCountAll</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//查询并返回总条数</span></span><br><span class="line">User.findAndCountAll(&#123;</span><br><span class="line">    where:&#123;</span><br><span class="line">        firstName: <span class="string">'dududu'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    offset: <span class="number">1</span>,  <span class="comment">//起始位置</span></span><br><span class="line">    limit: <span class="number">3</span>    <span class="comment">//条数限制</span></span><br><span class="line">&#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params">result</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(result.count);  <span class="comment">//返回总数</span></span><br><span class="line">    <span class="built_in">console</span>.log(result.rows);   <span class="comment">//返回查询到的实例</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="5-_findAll_+_all">5. findAll + all</h4><p>findAll 和 all 都返回找到的所有实例，不会返回数据表的总数。</p>
+<h3 id="3-_删除">3. 删除</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//删除 1 条 firstName 等于 dududu 的数据</span></span><br><span class="line">User.destroy(&#123;</span><br><span class="line">    where: &#123;</span><br><span class="line">        firstName: <span class="string">'dududu'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    limit: <span class="number">1</span></span><br><span class="line">&#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params">result</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Success'</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="4-_更新">4. 更新</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//把 id &gt;= 6 的数据的 firstName 更新为 littledu</span></span><br><span class="line">User.update(&#123;</span><br><span class="line">    firstName: <span class="string">'littledu'</span></span><br><span class="line">&#125;, &#123;</span><br><span class="line">    where:&#123;</span><br><span class="line">        id: &#123;</span><br><span class="line">            $gte: <span class="number">6</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params">result</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Success'</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="查询条件">查询条件</h2><p>来到这里，我们基本掌握了数据库的操作，同时也发现出现频率很高的 <code>where</code> ，<code>limit</code> 等查询条件</p>
+<h3 id="1-_条件表达式">1. 条件表达式</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">$and: &#123;a: <span class="number">5</span>&#125;           <span class="comment">// AND (a = 5)</span></span><br><span class="line">$or: [&#123;a: <span class="number">5</span>&#125;, &#123;a: <span class="number">6</span>&#125;]  <span class="comment">// (a = 5 OR a = 6)</span></span><br><span class="line">$gt: <span class="number">6</span>,                <span class="comment">// id &gt; 6</span></span><br><span class="line">$gte: <span class="number">6</span>,               <span class="comment">// id &gt;= 6</span></span><br><span class="line">$lt: <span class="number">10</span>,               <span class="comment">// id &lt; 10</span></span><br><span class="line">$lte: <span class="number">10</span>,              <span class="comment">// id &lt;= 10</span></span><br><span class="line">$ne: <span class="number">20</span>,               <span class="comment">// id != 20</span></span><br><span class="line">$between: [<span class="number">6</span>, <span class="number">10</span>],     <span class="comment">// BETWEEN 6 AND 10</span></span><br><span class="line">$notBetween: [<span class="number">11</span>, <span class="number">15</span>], <span class="comment">// NOT BETWEEN 11 AND 15</span></span><br><span class="line">$<span class="keyword">in</span>: [<span class="number">1</span>, <span class="number">2</span>],           <span class="comment">// IN [1, 2]</span></span><br><span class="line">$notIn: [<span class="number">1</span>, <span class="number">2</span>],        <span class="comment">// NOT IN [1, 2]</span></span><br><span class="line">$like: <span class="string">'%hat'</span>,         <span class="comment">// LIKE '%hat'</span></span><br><span class="line">$notLike: <span class="string">'%hat'</span>       <span class="comment">// NOT LIKE '%hat'</span></span><br><span class="line">$iLike: <span class="string">'%hat'</span>         <span class="comment">// ILIKE '%hat' (case insensitive)</span></span><br><span class="line">$notILike: <span class="string">'%hat'</span>      <span class="comment">// NOT ILIKE '%hat'</span></span><br><span class="line">$like: &#123; $any: [<span class="string">'cat'</span>, <span class="string">'hat'</span>]&#125;</span><br><span class="line">                       <span class="comment">// LIKE ANY ARRAY['cat', 'hat'] - also works for iLike and notLike</span></span><br><span class="line">$overlap: [<span class="number">1</span>, <span class="number">2</span>]       <span class="comment">// &amp;&amp; [1, 2] (PG array overlap operator)</span></span><br><span class="line">$contains: [<span class="number">1</span>, <span class="number">2</span>]      <span class="comment">// @&gt; [1, 2] (PG array contains operator)</span></span><br><span class="line">$contained: [<span class="number">1</span>, <span class="number">2</span>]     <span class="comment">// &lt;@ [1, 2] (PG array contained by operator)</span></span><br><span class="line">$any: [<span class="number">2</span>,<span class="number">3</span>]            <span class="comment">// ANY ARRAY[2, 3]::INTEGER (PG only)</span></span><br></pre></td></tr></table></figure>
+<p>上面的表达式不仅可以单独使用，还可以组合形成更复杂的条件，如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  rank: &#123;</span><br><span class="line">    $or: &#123;</span><br><span class="line">      $lt: <span class="number">100</span>,</span><br><span class="line">      $eq: <span class="literal">null</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// rank &lt; 100 OR rank IS NULL</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="2-_limit">2. limit</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Fetch 10 instances/rows</span></span><br><span class="line">Project.findAll(&#123; limit: <span class="number">10</span> &#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="3-_offset">3. offset</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Skip 5 instances and fetch the 5 after that</span></span><br><span class="line">Project.findAll(&#123; offset: <span class="number">5</span>, limit: <span class="number">5</span> &#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="4-_order">4. order</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//倒序查询</span></span><br><span class="line">something.findOne(&#123;</span><br><span class="line">  order: <span class="string">'username DESC'</span>;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="5-_raw">5. raw</h3><p>查询返回的数据都为 sequelize 实例，信息太多，很多时候我们直接想要各字段的数据，<code>raw</code> 设置为 true 后，则返回的数据为一个 json 对象，可以直接取值，方便。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Project.findAll(&#123; where: &#123; ... &#125;, raw: <span class="literal">true</span> &#125;)</span><br></pre></td></tr></table></figure></p>
+<hr>
+<p>未完待续………….</p>
+<p>[^orm]: ORM（Object/Relational Mapping）对象/关系型数据映射，也可以理解为一种数据持久化技术，其主要是把对象模型和关系型数据库的表建立对应关系，并且提供了一个通过对象去操作数据库表的机制。</p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/08/29/一个负延迟值的动画技巧/" rel="next">一个负延迟值的动画技巧</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+              <div class="ds-thread" data-thread-key="2015/09/26/Sequelize/"
+                   data-title="Sequelize" data-url="http://littledu.github.io/2015/09/26/Sequelize/">
+              </div>
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="http://temp.im/192x192" alt="Littledu" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Littledu</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">记录 成长</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            
+              <span class="site-state-item-count">0</span>
+              <span class="site-state-item-name">分类</span>
+              
+          </div>
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/littledu" target="_blank">GitHub</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/1763981464" target="_blank">Weibo</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-_安装_Mysql"><span class="nav-number">1.1.</span> <span class="nav-text">1. 安装 Mysql</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-_安装_Sequel_Pro"><span class="nav-number">1.2.</span> <span class="nav-text">2. 安装 Sequel Pro</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-_安装_Sequelize"><span class="nav-number">1.3.</span> <span class="nav-text">3. 安装 Sequelize</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#快速入门"><span class="nav-number">2.</span> <span class="nav-text">快速入门</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#连接数据库"><span class="nav-number">3.</span> <span class="nav-text">连接数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定义模型"><span class="nav-number">4.</span> <span class="nav-text">定义模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-_sequelize-define"><span class="nav-number">4.1.</span> <span class="nav-text">1. sequelize.define</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-_sequelize-import"><span class="nav-number">4.2.</span> <span class="nav-text">2. sequelize.import</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库操作"><span class="nav-number">5.</span> <span class="nav-text">数据库操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-_创建表"><span class="nav-number">5.1.</span> <span class="nav-text">1. 创建表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-_查询"><span class="nav-number">5.2.</span> <span class="nav-text">2. 查询</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-_findById"><span class="nav-number">5.2.1.</span> <span class="nav-text">1. findById</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-_findOne"><span class="nav-number">5.2.2.</span> <span class="nav-text">2. findOne</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-_findOrCreate"><span class="nav-number">5.2.3.</span> <span class="nav-text">3. findOrCreate</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-_findAndCountAll"><span class="nav-number">5.2.4.</span> <span class="nav-text">4. findAndCountAll</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-_findAll_+_all"><span class="nav-number">5.2.5.</span> <span class="nav-text">5. findAll + all</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-_删除"><span class="nav-number">5.3.</span> <span class="nav-text">3. 删除</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-_更新"><span class="nav-number">5.4.</span> <span class="nav-text">4. 更新</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查询条件"><span class="nav-number">6.</span> <span class="nav-text">查询条件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-_条件表达式"><span class="nav-number">6.1.</span> <span class="nav-text">1. 条件表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-_limit"><span class="nav-number">6.2.</span> <span class="nav-text">2. limit</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-_offset"><span class="nav-number">6.3.</span> <span class="nav-text">3. offset</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-_order"><span class="nav-number">6.4.</span> <span class="nav-text">4. order</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-_raw"><span class="nav-number">6.5.</span> <span class="nav-text">5. raw</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp; 
+  <span itemprop="copyrightYear">2015</span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Littledu</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"littledu"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+  	<script src="/js/ua-parser.min.js"></script>
+  	<script src="/js/hook-duoshuo.js"></script>
+  
+
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>
