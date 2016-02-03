@@ -45,7 +45,7 @@
 <meta property="og:site_name" content="小杜 -- 记录成长">
 <meta property="og:description" content="今年过得是飞快，很多事情没来得及总结，就又翻篇继续。再不回忆回忆，就真的过去了。今年就像是回到了刚毕业那年，不断的在学习吸收着新东西，整一年大半时间，感觉都是亢奋的。
 关于工作gulp 工作流在年初的时候，家乐说，来一起搞工作流吧，从此就与 gulp 结下了不解之缘，基于 gulp 做了 gulp-migcdn 和 gulp-lazyimagecss 两个插件，并维护 gulp-tmtsprite">
-<meta property="og:updated_time" content="2016-02-03T05:10:43.000Z">
+<meta property="og:updated_time" content="2016-02-03T05:16:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2015年终总结">
 <meta name="twitter:description" content="今年过得是飞快，很多事情没来得及总结，就又翻篇继续。再不回忆回忆，就真的过去了。今年就像是回到了刚毕业那年，不断的在学习吸收着新东西，整一年大半时间，感觉都是亢奋的。
@@ -226,6 +226,7 @@
       
         <span itemprop="articleBody"><p>今年过得是飞快，很多事情没来得及总结，就又翻篇继续。再不回忆回忆，就真的过去了。<br>今年就像是回到了刚毕业那年，不断的在学习吸收着新东西，整一年大半时间，感觉都是亢奋的。</p>
 <h2 id="关于工作">关于工作</h2><h3 id="gulp_工作流">gulp 工作流</h3><p>在年初的时候，家乐说，来一起搞工作流吧，从此就与 <a href="http://gulpjs.com/" target="_blank" rel="external">gulp</a> 结下了不解之缘，基于 gulp 做了 <a href="https://www.npmjs.com/package/gulp-migcdn" target="_blank" rel="external">gulp-migcdn</a> 和 <a href="https://www.npmjs.com/package/gulp-lazyimagecss" target="_blank" rel="external">gulp-lazyimagecss</a> 两个插件，并维护 <a href="https://www.npmjs.com/package/gulp-tmtsprite" target="_blank" rel="external">gulp-tmtsprite</a> 和 <a href="https://www.npmjs.com/package/node-lwip" target="_blank" rel="external">node-lwip</a>。维护的这两个超级屌，特别是 <code>node-lwip</code>，为了解决雪碧图插件在 Windows 下而生的预编译流程，通过他可是学习了不少。明年计划写两篇文章分别介绍一下 gulp 工作流和预编译，让别人也爽一爽。</p>
+<a id="more"></a>
 <h3 id="朋友圈广告">朋友圈广告</h3><p>上半年有幸参与了朋友圈广告这个项目，做了几个 H5 的落地页，写了一个移动端的滑屏组件：<a href="https://github.com/littledu/pageSlider" target="_blank" rel="external">PageSlider</a>，随着朋友圈广告的发展，它也从原本只有基本功能的组件成长到满足几乎所有滑屏需求。此组件纳入了朋友圈广告的通用库 <a href="https://github.com/TmT/WxMoment" target="_blank" rel="external">WxMoment</a>, 目前依然服务于朋友圈广告，几乎，所有你看到能滑的朋友圈广告！</p>
 <h3 id="TmT_发布平台">TmT 发布平台</h3><p>由于公司特殊的工作模式，我们的 CSS 和 JS 是分开的，而一直也存在着一个发布后缓存的问题，为了解决这个问题，结合工作流用 Node 搭了一个发布平台，提供一些接口供工作流写入数据库和开发获取最新文件名，每次工作流发布的时候，会先根据内容有没改动生成新的文件名，然后将有变动的写入数据库，平台再从数据库里读取，开发也可以通过提供的平台接口获得最新文件，这一个也是今年工作上的一个亮点，获益匪浅。</p>
 <p>下半年还花了不少时间跟同事打造了一套基于微信风格的 UI 组件，大大提升了日常工作效率，期待一下正式发布吧。</p>
