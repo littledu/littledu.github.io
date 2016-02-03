@@ -37,20 +37,29 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="先看如下动画效果：
-如上效果，光线是交叉着动的，按照常规的思路，我们的代码可能如下：123456789101112131415161718192021222324.page2__light1 &amp;#123;	-webkit-animation: anim-light_1 1s linear alternate infinite;&amp;#125;.page2__light2 &amp;#123;	-webkit-">
+<meta name="description" content="一直通过一些图片模块来取得图片的相关信息，最近在使用的过程中打开源码看了一下，学习到了不少东西。
+首先，一个文件的基本信息都是存在于文件自身，即使压缩工具会去掉一些信息，但基本的文件类型，宽，高等都还会存在，所以，我们需要知道这些信息具体存在于哪个位置上。
+通过相关搜索，我们得到了如下的信息：
+
+可以看到，几乎所有的文件起始位置存放的都是 文件类型，jpg 有三种 16 进制标记，png 只有一种">
 <meta property="og:type" content="article">
-<meta property="og:title" content="一个负延迟值的动画技巧">
-<meta property="og:url" content="http://littledu.github.io/2015/08/29/一个负延迟值的动画技巧/index.html">
+<meta property="og:title" content="高性能的获取图片信息">
+<meta property="og:url" content="http://littledu.github.io/2015/12/27/高性能的获取图片信息/index.html">
 <meta property="og:site_name" content="小杜 -- 记录成长">
-<meta property="og:description" content="先看如下动画效果：
-如上效果，光线是交叉着动的，按照常规的思路，我们的代码可能如下：123456789101112131415161718192021222324.page2__light1 &amp;#123;	-webkit-animation: anim-light_1 1s linear alternate infinite;&amp;#125;.page2__light2 &amp;#123;	-webkit-">
-<meta property="og:image" content="http://littledu.github.io/2015/08/29/一个负延迟值的动画技巧/demo.gif">
-<meta property="og:updated_time" content="2015-08-29T11:24:18.000Z">
+<meta property="og:description" content="一直通过一些图片模块来取得图片的相关信息，最近在使用的过程中打开源码看了一下，学习到了不少东西。
+首先，一个文件的基本信息都是存在于文件自身，即使压缩工具会去掉一些信息，但基本的文件类型，宽，高等都还会存在，所以，我们需要知道这些信息具体存在于哪个位置上。
+通过相关搜索，我们得到了如下的信息：
+
+可以看到，几乎所有的文件起始位置存放的都是 文件类型，jpg 有三种 16 进制标记，png 只有一种">
+<meta property="og:image" content="http://littledu.github.io/./images/高性能的获取图片信息/1450785069312.png">
+<meta property="og:updated_time" content="2015-12-27T17:20:18.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="一个负延迟值的动画技巧">
-<meta name="twitter:description" content="先看如下动画效果：
-如上效果，光线是交叉着动的，按照常规的思路，我们的代码可能如下：123456789101112131415161718192021222324.page2__light1 &amp;#123;	-webkit-animation: anim-light_1 1s linear alternate infinite;&amp;#125;.page2__light2 &amp;#123;	-webkit-">
+<meta name="twitter:title" content="高性能的获取图片信息">
+<meta name="twitter:description" content="一直通过一些图片模块来取得图片的相关信息，最近在使用的过程中打开源码看了一下，学习到了不少东西。
+首先，一个文件的基本信息都是存在于文件自身，即使压缩工具会去掉一些信息，但基本的文件类型，宽，高等都还会存在，所以，我们需要知道这些信息具体存在于哪个位置上。
+通过相关搜索，我们得到了如下的信息：
+
+可以看到，几乎所有的文件起始位置存放的都是 文件类型，jpg 有三种 16 进制标记，png 只有一种">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -60,7 +69,7 @@
   };
 </script>
 
-  <title> 一个负延迟值的动画技巧 | 小杜 -- 记录成长 </title>
+  <title> 高性能的获取图片信息 | 小杜 -- 记录成长 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -190,7 +199,7 @@
           
           
             
-              一个负延迟值的动画技巧
+              高性能的获取图片信息
             
           
         </h1>
@@ -199,8 +208,8 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-08-29T18:52:39+08:00" content="2015-08-29">
-            2015-08-29
+          <time itemprop="dateCreated" datetime="2015-12-27T23:59:30+08:00" content="2015-12-27">
+            2015-12-27
           </time>
         </span>
 
@@ -210,8 +219,8 @@
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2015/08/29/一个负延迟值的动画技巧/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/29/一个负延迟值的动画技巧/" itemprop="commentsCount"></span>
+              <a href="/2015/12/27/高性能的获取图片信息/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/27/高性能的获取图片信息/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -225,14 +234,25 @@
       
 
       
-        <span itemprop="articleBody"><p>先看如下动画效果：<br><img src="/2015/08/29/一个负延迟值的动画技巧/demo.gif" alt="[demo.gif]" title="[demo.gif]"></p>
-<p>如上效果，光线是交叉着动的，按照常规的思路，我们的代码可能如下：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.page2__light1</span> <span class="rules">&#123;</span><br><span class="line">	<span class="rule"><span class="attribute">-webkit-animation</span>:<span class="value"> anim-light_1 <span class="number">1s</span> linear alternate infinite</span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"><span class="class">.page2__light2</span> <span class="rules">&#123;</span><br><span class="line">	<span class="rule"><span class="attribute">-webkit-animation</span>:<span class="value"> anim-light_2 <span class="number">1s</span> linear alternate infinite</span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="at_rule">@<span class="keyword">-webkit-keyframes</span> anim-light_1 </span>&#123;</span><br><span class="line">    0% <span class="rules">&#123;</span><br><span class="line">        <span class="rule"><span class="attribute">-webkit-transform</span>:<span class="value"> <span class="function">rotate</span>(-<span class="number">20deg</span>)</span></span>;</span><br><span class="line">    &#125;</span></span><br><span class="line">    100% <span class="rules">&#123;</span><br><span class="line">        <span class="rule"><span class="attribute">-webkit-transform</span>:<span class="value"> <span class="function">rotate</span>(<span class="number">20deg</span>)</span></span>;</span><br><span class="line">    &#125;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="at_rule">@<span class="keyword">-webkit-keyframes</span> anim-light_2 </span>&#123;</span><br><span class="line">    0% <span class="rules">&#123;</span><br><span class="line">        <span class="rule"><span class="attribute">-webkit-transform</span>:<span class="value"> <span class="function">rotate</span>(<span class="number">20deg</span>)</span></span>;</span><br><span class="line">    &#125;</span></span><br><span class="line">    100% <span class="rules">&#123;</span><br><span class="line">        <span class="rule"><span class="attribute">-webkit-transform</span>:<span class="value"> <span class="function">rotate</span>(-<span class="number">20deg</span>)</span></span>;</span><br><span class="line">    &#125;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+        <span itemprop="articleBody"><p>一直通过一些图片模块来取得图片的相关信息，最近在使用的过程中打开源码看了一下，学习到了不少东西。</p>
+<p>首先，一个文件的基本信息都是存在于文件自身，即使压缩工具会去掉一些信息，但基本的文件类型，宽，高等都还会存在，所以，我们需要知道这些信息具体存在于哪个位置上。</p>
+<p>通过相关搜索，我们得到了如下的信息：</p>
+<p><img src="./images/高性能的获取图片信息/1450785069312.png" alt="Alt text"></p>
+<p>可以看到，几乎所有的文件起始位置存放的都是 <code>文件类型</code>，jpg 有三种 16 进制标记，png 只有一种，也就是说，我只需要如下判断，就可以知道文件是什么文件。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getFileType</span>(<span class="params">buffer</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(buffer_data[<span class="number">0</span>] == <span class="number">0x89</span> &amp;&amp; buffer_data[<span class="number">1</span>] == <span class="number">0x50</span> &amp;&amp; buffer_data[<span class="number">2</span>] == <span class="number">0x4E</span> &amp;&amp; buffer_data[<span class="number">3</span>] == <span class="number">0x47</span> &amp;&amp; buffer_data[<span class="number">4</span>] == <span class="number">0x0D</span> &amp;&amp; buffer_data[<span class="number">5</span>] == <span class="number">0x0A</span> &amp;&amp; buffer_data[<span class="number">6</span>] == <span class="number">0x1A</span> &amp;&amp; buffer_data[<span class="number">7</span>] == <span class="number">0x0A</span>)&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">'png'</span>;</span><br><span class="line">	&#125;<span class="keyword">else</span> <span class="keyword">if</span>()&#123;</span><br><span class="line">		<span class="comment">//...</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<p>一个从左边开始，一个从右边开始，这样子就能交叉了。</p>
-<p>上面代码用了两个 keyframes，如果我们使用负的延迟值，即可只要一个 keyframes 实现同样的效果。如下代码:</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.page2__light1</span> <span class="rules">&#123;</span><br><span class="line">	<span class="rule"><span class="attribute">-webkit-animation</span>:<span class="value"> anim-light_1 <span class="number">1s</span> linear alternate infinite</span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"><span class="class">.page2__light2</span> <span class="rules">&#123;</span><br><span class="line">	<span class="rule"><span class="attribute">-webkit-animation</span>:<span class="value"> anim-light_2 <span class="number">1s</span> -<span class="number">1s</span> linear alternate infinite</span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="at_rule">@<span class="keyword">-webkit-keyframes</span> anim-light_1 </span>&#123;</span><br><span class="line">    0% <span class="rules">&#123;</span><br><span class="line">        <span class="rule"><span class="attribute">-webkit-transform</span>:<span class="value"> <span class="function">rotate</span>(-<span class="number">20deg</span>)</span></span>;</span><br><span class="line">    &#125;</span></span><br><span class="line">    100% <span class="rules">&#123;</span><br><span class="line">        <span class="rule"><span class="attribute">-webkit-transform</span>:<span class="value"> <span class="function">rotate</span>(<span class="number">20deg</span>)</span></span>;</span><br><span class="line">    &#125;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>注意上面的关键代码是<br> -webkit-animation: anim-light_2 1s <code>-1s</code> linear alternate infinite;</p>
-<p>我们知道， <code>animation-delay</code> 的作用是延迟动画的开始时间，一般我们也都是使用正值，但如果使用负值呢？答案很明显，就像上面那样，能够将播放帧往前移，举个例子：假设我们的动画有 10 帧，在 10 秒内执行完成，那么，-1 秒即在第一帧位置，-5 秒则在中间，-10 秒则到了最后。所以，我们上面演示的动画，我们只需要将第二个动画的起始帧设为从最后一帧开始，就可以了。</p>
+<p>严谨完整的判断应该是如上的代码，但通过观察整个列表，其实会发现，很多信息都是唯一的，比如 jpg 有三种，但三种的前三位都是 <code>FF D8 FF</code>, 而且其他类型的文件都没有与其一样的，所以，可以不需要写那么长的判断，只需判断前三位即可。</p>
+<blockquote>
+<p>附： 完整的 Hex signature 列表：<a href="https://en.wikipedia.org/wiki/List_of_file_signatures" target="_blank" rel="external">https://en.wikipedia.org/wiki/List_of_file_signatures</a></p>
+</blockquote>
+<p>那图片的宽高信息又存在于哪些位置呢？不同类型的文件，宽高信息存储的位置都不一样，如 png 的 hex 信息如下：</p>
+
+<p>第 17 到 20 字节区间的位置存储着 png 的宽度信息，通过将其转换为 10 进制，就可以得到我们要的宽度值了。<br>如： 16 进制的 <code>0000005A</code> 转换为 10 进制为 <code>90</code>。</p>
+<p>知道原理后，如果只是想简单的得到图片的一些基本信息，只需要写一点代码就可以非常高性能的获取，而不需要去依赖一些稍重的图形模块。<br>具体代码可以查看： <a href="https://github.com/weixin/gulp-lazyimagecss/blob/master/lib/fastimagesize.js" target="_blank" rel="external">https://github.com/weixin/gulp-lazyimagecss/blob/master/lib/fastimagesize.js</a></p>
+<p>知道原理后，也可以联想到更多，比如，.png 有可能并不是 png，有可能是其他; 如果一个图片上传模块验证不够完美，我把一个 php 文件的头改为图片头，欺骗了程序进行上传后执行，结果就有可能 呵呵 了。</p>
+<blockquote>
+<p>文件的 hex 值可以通过一些 hex 工具查看，比如 sublime 就有 hex viewer 插件。</p>
+</blockquote>
 </span>
       
     </div>
@@ -244,13 +264,13 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/09/26/Sequelize/" rel="prev">Sequelize</a>
+              <a href="/2016/02/03/2015年终总结/" rel="prev">2015年终总结</a>
             
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/08/28/CSS中的两端对齐/" rel="next">CSS中的两端对齐</a>
+              <a href="/2015/09/26/Sequelize/" rel="next">Sequelize</a>
             
           </div>
         </div>
@@ -275,8 +295,8 @@
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2015/08/29/一个负延迟值的动画技巧/"
-                   data-title="一个负延迟值的动画技巧" data-url="http://littledu.github.io/2015/08/29/一个负延迟值的动画技巧/">
+              <div class="ds-thread" data-thread-key="2015/12/27/高性能的获取图片信息/"
+                   data-title="高性能的获取图片信息" data-url="http://littledu.github.io/2015/12/27/高性能的获取图片信息/">
               </div>
             
           </div>
