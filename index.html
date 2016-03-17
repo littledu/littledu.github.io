@@ -187,6 +187,79 @@
           
           
             
+              <a class="post-title-link" href="/2016/03/17/我理想中的前端工作流/" itemprop="url">
+                我理想中的前端工作流
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2016-03-17T21:17:57+08:00" content="2016-03-17">
+            2016-03-17
+          </time>
+        </span>
+
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2016/03/17/我理想中的前端工作流/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/17/我理想中的前端工作流/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>在日常的前端开发中，我们会遇到 <code>LESS/SASS 编译</code>、<code>CSS 前缀自动补全</code> 、<code>CSS 压缩</code>、 <code>图片压缩</code>、<code>JS 合并压缩</code>、<code>布署发布</code> 等各种各样的操作。通常，我们都会根据实际情况定制一个 <code>流程</code> 性的工具来实现所有常规的功能，这，就是我理解的 <strong>前端工作流</strong>。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/03/17/我理想中的前端工作流/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2016/02/03/2015年终总结/" itemprop="url">
                 2015 年终总结
               </a>
@@ -225,19 +298,12 @@
 
       
         
-          <span itemprop="articleBody"><p>今年过得是飞快，很多事情没来得及总结，就又翻篇继续。再不回忆回忆，就真的过去了。<br>今年就像是回到了刚毕业那年，不断的在学习吸收着新东西，整一年大半时间，感觉都是亢奋的。</p>
-<h2 id="关于工作">关于工作</h2><h3 id="gulp_工作流">gulp 工作流</h3><p>在年初的时候，家乐说，来一起搞工作流吧，从此就与 <a href="http://gulpjs.com/" target="_blank" rel="external">gulp</a> 结下了不解之缘，基于 gulp 做了 <a href="https://www.npmjs.com/package/gulp-migcdn" target="_blank" rel="external">gulp-migcdn</a> 和 <a href="https://www.npmjs.com/package/gulp-lazyimagecss" target="_blank" rel="external">gulp-lazyimagecss</a> 两个插件，并维护 <a href="https://www.npmjs.com/package/gulp-tmtsprite" target="_blank" rel="external">gulp-tmtsprite</a> 和 <a href="https://www.npmjs.com/package/node-lwip" target="_blank" rel="external">node-lwip</a>。维护的这两个超级屌，特别是 <code>node-lwip</code>，为了解决雪碧图插件在 Windows 下而生的预编译流程，通过他可是学习了不少。明年计划写两篇文章分别介绍一下 gulp 工作流和预编译，让别人也爽一爽。</p>
-<h3 id="朋友圈广告">朋友圈广告</h3><p>上半年有幸参与了朋友圈广告这个项目，做了几个 H5 的落地页，写了一个移动端的滑屏组件：<a href="https://github.com/littledu/pageSlider" target="_blank" rel="external">PageSlider</a>，随着朋友圈广告的发展，它也从原本只有基本功能的组件成长到满足几乎所有滑屏需求。此组件纳入了朋友圈广告的通用库 <a href="https://github.com/TmT/WxMoment" target="_blank" rel="external">WxMoment</a>, 目前依然服务于朋友圈广告，几乎，所有你看到能滑的朋友圈广告！</p>
-<h3 id="TmT_发布平台">TmT 发布平台</h3><p>由于公司特殊的工作模式，我们的 CSS 和 JS 是分开的，而一直也存在着一个发布后缓存的问题，为了解决这个问题，结合工作流用 Node 搭了一个发布平台，提供一些接口供工作流写入数据库和开发获取最新文件名，每次工作流发布的时候，会先根据内容有没改动生成新的文件名，然后将有变动的写入数据库，平台再从数据库里读取，开发也可以通过提供的平台接口获得最新文件，这一个也是今年工作上的一个亮点，获益匪浅。</p>
-<h3 id="Web_UI_组件库">Web UI 组件库</h3><p>下半年还花了不少时间跟同事打造了一套基于微信风格的 Web UI 组件库，服务组内所有基于微信风格的项目，大大提升了日常工作效率，期待一下正式发布吧。</p>
-<p>今年，享受着解决问题带来的快感，也从维护开源项目中学习进步，会因为有人用了自己开源的东西而兴奋，也有过问题没解决时睡不着的痛苦经历，但一切都是那么的美好，享受着指尖的乐趣，简单的快乐。</p>
-<h2 id="关于生活">关于生活</h2><p>今年最大的改变，莫过于升级为人父，犹记得那天半夜被电话惊醒，凌晨 4 点在北站等回家的第一班车，在产房外的焦虑，和看到母子平安后的那种不知怎么表达的心情。想起来依然很是激动，这种感觉很美妙，看着那么小的一个生命，一切是那么的新奇，一开始就只是吃和睡，后来开始会笑，会跟你互动，再到现在越来越烦人，不肯被横着抱，一定要竖着抱，不是那么容易就乖乖睡觉了，小家伙一天天的在长大。</p>
-<p>唯一的遗憾是，由于条件的限制，我暂时无法将老婆孩子带在身边，孩子一直都是由老婆和老妈在带，特别是老婆，每天晚上都要起来好几次，喂奶，换尿布…<br>无以为报，只能好好赚钱，给你们提供能力范围内最好的生活，相信我们明年会更好！</p>
-<h2 id="关于成长">关于成长</h2><h3 id="遇到问题，不要沮丧，先解决它">遇到问题，不要沮丧，先解决它</h3><p>今年有一次跟同事过香港，一大早 7 点就赶到关口，在排了长队之后，轮到同事了他才发现签证到期了，这是一个多么沮丧的事情，在大家都认为他会直接转身回家睡觉时，两个小时后，他若无其事的在香港跟我们会合，一点也没有影响他当天的心情。<br>他先是打电话问其他同事有没办法解决，得到解决方法后，先打车回家拿了资料，再上淘宝买了张山寨机票，以要去香港转机的理由，成功过港。</p>
-<p>本来，这是一个很小的事情，换作其他人，比如换作我，可能直接就什么心情都没有了，直接转身回家，从同事的身上，看到一个很好的品质，不管啥事，既然发生了，那么，先不要沮丧，也不要放弃，保持一个好心情好心态，心态上积极了，则没有解决不了的问题。</p>
-<p>很多时候，在工作的过程中，我们难免会遇到各种各样的问题，比如，不认同产品的理念，同事之间意见相左。不管最终结果如何，都应该先努力尽可能的去解决问题，而不是说这个产品不适合我，我不想做，甚至于会排斥这个部门、这个公司，这是一件非常错误可怕的事情。</p>
-<p>2015， 很幸运的做了对的选择，在一个非常优秀的团队里面学习成长，每一天都是那么的充实，感谢团队的每一个人，有你们，更精彩，2016，让我们再创辉煌。</p>
-</span>
+          <p>今年过得是飞快，很多事情没来得及总结，就又翻篇继续。再不回忆回忆，就真的过去了。<br>今年就像是回到了刚毕业那年，不断的在学习吸收着新东西，整一年大半时间，感觉都是亢奋的。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/02/03/2015年终总结/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -668,7 +734,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-count">7</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
